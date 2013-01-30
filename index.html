@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learn Icelandic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script type="text/javascript" src="js/cordova-2.2.0.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script type="text/javascript" src="js/backbone.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/models.js"></script>
+<script type="text/javascript" src="js/views.js"></script>
+<script type="text/javascript" src="js/router.js"></script>
+<script type="text/javascript">
+var App = (function ($, Backbone, global) {
+
+    // Build Init
+    var init = function() {
+
+    	// iScroll
+        global.myScroll = new iScroll('wrapper', { scrollbarClass: 'myScrollbar' });
+
+        // Model
+        global.LessonModel = new LessonModel({ urlRoot: '/json' });
+
+        // Views
+        global.LessonView = new LessonView({ el: $('#scroller') });
+        global.PhraseView = new PhraseView({ el: $('#scroller') });
+
+        // Audio 
+        global.audio = document.createElement('audio').setAttribute('id', 'audio-player');
+
+        // Create Router
+		global.AppRouter = new ApplicationRouter($('#scroller'));
+
+        // Start Backbone history a neccesary step for bookmarkable URL's
+        Backbone.history.start();
+    };
+
+    return {
+        init: init
+    };
+
+} (jQuery, Backbone, window));
+
+$(document).ready(function()
+{
+	App.init();
+});
+</script>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="scroller">
+		<h1>Hi Yo!</h1>
+	</div>
+</div>
+<div id="footer"></div>
+
+<script type="text/template" id="about">
+    <h1>About</h1>
+    <p>What, what? I'm in the About section fool</p>
+</script>
+
+<script type="text/template" id="lessons">
+    <h1>Lets learn some Icelandic</h1>
+	<a id="logo-island" href="#about"></a>
+    <ul id="lessons-list">
+        <li><a href="#/common-communication" class="play-lesson">Common Communication</a></li>
+        <li><a href="#/common-food-phrases" class="play-lesson">Common Food Phrases</a></li>
+        <li><a href="#/how-to-discuss-the-weather" class="play-lesson">How To Discuss The Weather</a></li>
+        <li><a href="#/how-to-make-introductions" class="play-lesson">How To Make Introductions</a></li>
+        <li><a href="#/simple-greetings" class="play-lesson">Simple Greetings</a></li>
+    </ul>
+</script>
+
+<script type="text/template" id="phrases">
+	<h1><%= title %></h1>
+    <ul id="phrases-list">
+    	<%= available_phrases %>
+    </ul>
+</script>
+
+<script type="text/template" id="player">
+	<div id="phrase-container">
+	    <div id="foreign-phrase">
+	    	<%= foreign %>
+	    </div> 
+	    <div id="native-phrase">
+	    	<%= native %>
+	    </div>
+    </div>
+</script>
+
+</body>
+</html>

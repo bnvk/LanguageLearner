@@ -1,0 +1,56 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+@font-face {
+	font-family: 'Language-App';
+	src:url('fonts/Language-App.eot');
+	src:url('fonts/Language-App.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Language-App.svg#Language-App') format('svg'),
+		url('fonts/Language-App.woff') format('woff'),
+		url('fonts/Language-App.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before {
+	font-family: 'Language-App';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'Language-App';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-play:before {
+	content: "\e003";
+}
+.icon-pause:before {
+	content: "\e004";
+}
+.icon-volume-mute:before {
+	content: "\e000";
+}
+.icon-volume-low:before {
+	content: "\e001";
+}
+.icon-volume-medium:before {
+	content: "\e005";
+}
+.icon-volume-high:before {
+	content: "\e006";
+}
+.icon-equalizer:before {
+	content: "\e007";
+}
+.icon-arrow-left-alt1:before {
+	content: "\e008";
+}
