@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/* Three Column */
+@media screen and (min-width: 800px) {
+  .title,
+  .category,
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    width: 31%;
+    margin: 0 2% 20px 0;
+    padding-bottom: 31%;
+  }
+  /*
+  
+  	body  {
+  		.body;
+  		background: url(../images/background-ipad.jpg);
+  		background-position: 0 0;
+  	}
+  	
+  	a {	text-decoration: none; }
+  		
+  	#footer {
+  		position:absolute;
+  		bottom:0; left:0;
+  		width:100%;
+  		height:64px;
+  		background-color: #222;
+  		padding: 0;
+  		border-top:1px solid #444;
+  		text-align: center;
+  	}
+  	
+  	#footer a {
+  		display: inline-block;
+  		margin: .40em 2em 0 2em;
+  		font-size: 1.5em;
+  		color: #FFF;
+  	}
+  	
+  	#wrapper {
+  		position: absolute; z-index: 1;
+  		top: 0px; bottom: 48px; left: 0;
+  		width:100%;
+  		overflow:auto;
+  	} 
+  	
+  	#scroller {
+  		position:relative;
+  		-webkit-touch-callout:none;
+  		-webkit-tap-highlight-color:rgba(0,0,0,0);
+  		float:left;
+  		width:100%;
+  		padding:0;
+  	}
+  	
+  	
+  	#logo-island { 
+  		width: 267px;
+  		height: 222px;
+  		display: block;
+  		background: url(../images/island@1x.png) 0 0 no-repeat;
+  		margin: 1em auto 1.5em auto;
+  	}
+  	
+  	
+  	h1 { 
+  		margin:  .25em .25em 0 .25em;
+  		font-family: Helvetica, Arial, sans-serif;
+  		font-size: 2em;
+  	    padding:0px;
+  	    text-align:center;	
+  		line-height: 1.25em;
+  		letter-spacing: -2px;
+  		color: #FFFFFF;
+  		font-weight: bold;
+  		text-shadow: 1px 1px 2px #555555;
+  	}
+  
+  	
+  	
+  	// LESSONS View
+  	#lessons-list {
+  		margin: 0;
+  		padding: 0;
+  		list-style:none;	
+  	}
+  	
+  	#lessons-list li {
+  		float: left;
+  		margin: 0;
+  		padding: 1em;
+  	}
+  	
+  	#lessons-list li:last-child { 
+  		border-bottom: 0px;
+  	}
+  	
+  	#lessons-list li a {
+  		display: block;
+  		color: #FFF;
+  		font-family: Helvetica, Arial, sans-serif;
+  		font-weight: bold;
+  		font-size: 1.5em;
+  		line-height: 1em;
+  		text-shadow: 1px 1px 1px #555555;	
+  	}
+  	
+  	#lessons-list li a::active {
+  		background: #FFF;
+  		color: #333;	
+  	}	
+  	
+  	
+  	// Phrases
+  	#phrases-list {
+  		list-style:none;
+  		margin: 0;
+  		padding: 0;	
+  	}
+  	
+  	#phrases-list li {
+  		background-color: rgba(255, 255, 255, .8);
+  		border-radius: .25em;
+  		margin: .75em .5em;
+  		padding: .5em;
+  	}
+  	
+  	#phrases-list li a {
+  		color: #000000;
+  		font-family: Helvetica, Arial, sans-serif;
+  		font-weight: bold;
+  		font-size: 1em;
+  		line-height: 1.25em;
+  	}
+  	
+  	#phrases-list li a.play-phrase { 
+  		text-align: center;
+  		display: block;
+  		padding: .25em .5em;
+  		color: #333333;
+  	}
+  	
+  	#phrase-container {
+  		min-height: 960px;
+  		.phrase-container;
+  	}
+  	
+  	#foreign-phrase { 
+  		margin: 0;
+  		padding: .75em .25em .5em .25em; 
+  		text-align: center;
+  		color: #FFFFFF; 
+  		font-size: 4em;
+  		font-weight: bold;
+  		line-height: 1.5em;
+  		letter-spacing: -1px;
+  	}
+  	
+  	#native-phrase {
+  		margin: 0;
+  		padding: 0 .25em 0 .25em; 
+  		color: #000000;
+  		text-align: center;	
+  		font-size: 2.5em;
+  		font-weight: bold;
+  		line-height: 1.5em;
+  		letter-spacing: -1px;
+  	}
+  */
+}

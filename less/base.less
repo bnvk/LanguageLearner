@@ -1,56 +1,122 @@
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */ }
+
+/*	Authors: Craig Rozynski craigrozynski.com, dinosaurswithlaserz.com Marco Lago marcolago.com
+	Version 2.0 2011-07-15 */
+/* CSS Reset (customised) */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, em, img, small, strong {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+body { display: block; }
+html { overflow-y: scroll; }
+a:hover, a:active { outline: none; }
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+::-moz-selection{ background: #3b7cbf; color: #fff; text-shadow: none; }
+::selection { background: #3b7cbf; color: #fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #3b7cbf; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+
+.clear { clear: both; }
+.hide { display: none; }
+
+/* Primary Styles */
+#container {
+	width: 100%;
+	height: 100%;
 }
 
-@font-face {
-	font-family: 'Language-App';
-	src:url('fonts/Language-App.eot');
-	src:url('fonts/Language-App.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Language-App.svg#Language-App') format('svg'),
-		url('fonts/Language-App.woff') format('woff'),
-		url('fonts/Language-App.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+#header {
+	color: #FFFFFF;
+	width: 100%;
+	height: 20%;
 }
 
-[data-icon]:before {
-	font-family: 'Language-App';
-	content: attr(data-icon);
-	speak: none;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+#stage {
+	width: 100%;
+	height: 80%;
+	overflow: hidden;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-	font-family: 'Language-App';
-	font-style: normal;
-	speak: none;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+#footer {
+	position: fixed;
+	bottom: 0; left:0;
+	width: 100%;
+	height: 10%;
+	background-color: #222;
+	padding: 0;
+	border-top:1px solid #444;
+	text-align: center;
 }
-.icon-play:before {
-	content: "\e003";
+
+#footer a {
+	display: inline-block;
+	margin: 1em 2em;
+	font-size: 2.125em;
+	color: #FFF;
+	text-decoration: none;
 }
-.icon-pause:before {
-	content: "\e004";
+
+
+
+.boxy			{ width: 20%; padding-bottom: 20%; position: relative; float: left; background-color: rgba(255, 255, 255, .75); margin: .5em; display: block; }
+.boxy:hover		{ background-color: rgba(200, 200, 200, .75) }
+.boxy-inner		{ position: absolute; left: 1px; right: 1px; top: 1px; bottom: 1px; padding: 10px; color: #555555; overflow: hidden; }
+.boxy-inner i	{ margin: .3em 0 .2em .2em; display: block; }
+.boxy-inner h1 	{ line-height: 1; letter-spacing: -0.05em; }
+.boxy-inner h2 	{ line-height: 1; letter-spacing: -0.05em; }
+.boxy-inner h3 	{ line-height: 1; letter-spacing: -0.05em; }
+.boxy-inner p	{ font-size: 1.25em; line-height: 1.15; margin: 0.75em 0; }
+
+
+#lesson { 
+	margin: 0 0 10% 0;
+	padding: 0;
+	list-style: none;
 }
-.icon-volume-mute:before {
-	content: "\e000";
+
+.listy { 
+	margin: .5em;
+	display: block;
 }
-.icon-volume-low:before {
-	content: "\e001";
+
+.listy a { 
+	display: block;
+	width: 100%;
+	padding: 1em;
+	color: #555555;	
+	text-decoration: none;
+	background-color: rgba(255, 255, 255, .75);
+	font-weight: bold;
 }
-.icon-volume-medium:before {
-	content: "\e005";
+
+.listy a:hover {
+	background-color: rgba(200, 200, 200, .75);	
 }
-.icon-volume-high:before {
-	content: "\e006";
+
+	
+#foreign-phrase { 
+	display: block;
+	margin: 0 auto .5 auto;
+	text-align: center;
+	color: #FFFFFF; 
+	font-size: 4em;
+	font-weight: bold;
+	line-height: 1.5em;
+	letter-spacing: -1px;
 }
-.icon-equalizer:before {
-	content: "\e007";
-}
-.icon-arrow-left-alt1:before {
-	content: "\e008";
+
+#native-phrase {
+	display: block;
+	margin: 0 auto;
+	color: #000000;
+	text-align: center;
+	font-size: 2.5em;
+	font-weight: bold;
+	line-height: 1.5em;
+	letter-spacing: -1px;
 }

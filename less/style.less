@@ -1,36 +1,15 @@
 @import "config.less";
+@import "icon-font.less";
+@import "animate.less";
+@import "mixins.less";
 @import "base.less";
-
-.body { 
-	font-family: Helvetica, Arial, sans-serif; font-size: 18px;
-	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-	-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-	background-repeat: no-repeat;
-	background-color: #596a72;
-	background-attachment:fixed;
-	height:100%;
-	margin:0px;
-	padding:0px;
-	width:100%;
-}
-
-.phrase-container {
-	margin: 0;
-	padding: 0;
-	background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
-	background: radial-gradient(ellipse at center,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
 
 /* ==========================================================================
    Various Resolutions
-   ========================================================================== */
-
-@import "size_480.less";
-@import "size_768.less";
-
+   ========================================================================== 
+*/
+@import "size_column.less";
+@import "size_two_column.less";
+@import "size_three_column.less";
+@import "size_four_column.less";
+@import "size_four_column_largest.less";
