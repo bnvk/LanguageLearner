@@ -28,12 +28,15 @@ var ApplicationRouter = Backbone.Router.extend(
 	        	console.log('Config lodaded is error');
 	        }
 	    });
-
 		
 	},
 	about: function()
 	{
 		console.log('router: about');
+
+		var NewPlayerModel = new PlayerModel({ urlRoot: '/audio' });
+		player = new Media(NewPlayerModel.get('audio_file'), NewPlayerModel.mediaSuccess, NewPlayerModel.mediaError, NewPlayerModel.mediaStatus);
+		player.play();
 	},
 	lesson: function(lesson, id)
 	{
@@ -41,14 +44,32 @@ var ApplicationRouter = Backbone.Router.extend(
 		LessonModel.url = 'json/' + lesson + '.json';
 		LessonModel.fetch({
 			success: function() {
+			
+				// Show Lesson
 				if (id === undefined) {
 					console.log('router & data loaded lesson: ' + lesson);
+
+					// Update Header
+					NavView.updateHeader(LessonModel.get('lesson'));
+
+					// Lesson
 					LessonView.build();
+					
+					// Footer
+					NavView.updateFooter('lesson');
 				}
+				// Show Phrase
 				else {
 					console.log('router lesson: ' + lesson + ' id: ' + id);
+					
+					// Hide Header
 					NavView.hideHeader();
+					
+					// Phrase
 					PhraseView.build(id);
+				
+					// Footer
+					NavView.updateFooter('phrase');
 				}
 			}
 		});	

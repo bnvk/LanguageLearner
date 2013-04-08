@@ -30,16 +30,12 @@ var LessonModel = Backbone.Model.extend({
 
 var PlayerModel = Backbone.Model.extend({
     defaults: {
-    	audio_file: "audio/default.mp3",
+    	audio_file: "/audio/common-communication.mp3",
 		intro: { start: 1, end: 1 }
     },
 	initialize: function() {
 	
-		
-	},
-	media: function() {
-
-		return new Media(this.get('audio_file'), this.mediaSuccess, this.mediaError, this.mediaStatus);
+		//return '';new Media(this.get('audio_file'), this.mediaSuccess, this.mediaError, this.mediaStatus);
 	},
 	mediaSuccess: function() {
 		console.log('Inside mediaSuccess yay!!!!');
@@ -49,5 +45,5 @@ var PlayerModel = Backbone.Model.extend({
 	},
 	mediaStatus: function() {
 		console.log('Inside mediaStatus yay!!!!');
-	}	
+	}
 });

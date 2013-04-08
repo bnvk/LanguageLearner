@@ -12,11 +12,14 @@
 </head>
 <body>
 
+<div id="background"></div>
+
 <div id="container">
 	<div id="header" class="animated">
-		<h1></h1>
+		<h1 id="header-title"></h1>
 	</div>
 	<div id="stage"></div>
+	<audio id="audio-player"></audio>
 	<div id="footer" class="animated"></div>  
 </div>
 
@@ -44,7 +47,7 @@
 
 
 <script type="text/template" id="template-player">
-	<div id="phrase-container" class="animated fadeInUp">
+	<div id="phrase-container" class="animated fadeIn">
 	    <div id="foreign-phrase">
 	    	{{ foreign }}
 	    </div> 
@@ -54,12 +57,21 @@
     </div>
 </script>
 
-<script type="text/template" id="template-player-controls">
+
+<script type="text/template" id="template-player-controls-lesson">
+	<a href="#"><span class="icon-arrow-left-alt1"></span></a>
+	<a href="#" id="button_play_all"><span class="icon-play"></span></a>
+	<a href="#" id="button_pause_all"><span class="icon-pause"></span></a>
+</script>
+
+
+<script type="text/template" id="template-player-controls-phrase">
 	<a id="button_back" href="#{{ lesson_url }}"><span class="icon-arrow-left-alt1"></span></a>
 	<a id="button_loop" href="#loop-controls"><span class="icon-number-{{ loop_total }}-dark"></span></a>
 	<a id="button_play" href="#player-state"><span class="icon-pause"></span></a>
 	<a id="button_vol" href="#player-volume"><span class="icon-volume-high"></span></a>
 </script>
+
 
 <script type="text/template" id="template-loop-controls">
 	<a href="#" data-loop="1" class="icon-number-1-light"></a>

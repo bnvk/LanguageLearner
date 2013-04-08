@@ -8,22 +8,26 @@ var NavView = Backbone.View.extend(
 	render: function(){},
 	showHeader: function(title) {
 
-		$('#header').find('h1').html(title);
-		$('#header').addClass('bounceInLeft');
+		$('#header-title').html(title);
+		$('#header').removeClass('bounceOutRight').addClass('bounceInLeft');
 	},
 	hideHeader: function() {
 
-		$('#header').removeClass('bounceInLeft').addClass('bounceOutLeft').hide();
+		$('#header').removeClass('bounceOutLeft bounceInLeft').addClass('bounceOutRight');
+
+		setTimeout(function() {
+			$('#header').hide();
+		}, 250)
 	},
 	updateHeader: function(title) {
 
-		$('#header').find('h1').html(title);
 		setTimeout(function() {
-			$('#header').addClass('bounceOutRight');
+			$('#header').show().addClass('bounceOutRight');
 		}, 250);
 
 		setTimeout(function() {
-			$('#header').find('h1').html(title).removeClass('bounceOutRight').addClass('bounceInLeft');
+			$('#header-title').html(title);
+			$('#header').removeClass('bounceOutRight bounceInLeft').addClass('bounceInLeft');
 		}, 500);
 	},
 	showFooter: function() {
@@ -34,7 +38,22 @@ var NavView = Backbone.View.extend(
 	},
 	hideFooter: function() {
 
-		$('#footer').removeClass('bounceInUp').addClass('bounceOutDown');
+		setTimeout(function() {
+			$('#footer').removeClass('bounceInUp').addClass('bounceOutDown');
+		}, 250);
+	}, 
+	updateFooter: function(control_type) {
+		
+		
+		// Footer
+		var controls_data = {
+			lesson_url: LessonModel.get('lesson_url'),
+			loop_total: UserModel.get('loop_total')
+		}
+	
+	    var template_controls = _.template($('#template-player-controls-' + control_type).html(), controls_data);
+		$('#footer').html(template_controls).removeClass('bounceOutDown').addClass('bounceInUp');
+	
 	}
 });
 
@@ -48,11 +67,6 @@ var HomeView = Backbone.View.extend(
 	render: function(){},
 	showLessons: function()
 	{
-		// Header
-		setTimeout(function() {
-			$('#header').find('h1').html('Takk Iceland <img src="images/iceland.svg" height="85">').addClass('bounceInLeft');
-		}, 250);
-
 		// Stage - Lessons
 		var this_container = this.$el;
 		this_container.html('');
@@ -83,14 +97,6 @@ var LessonView = Backbone.View.extend(
 	},
 	build: function() {
 
-		// Header
-		$('#header').addClass('bounceOutRight');
-		
-		setTimeout(function() {
-			$('#header').removeClass('bounceOutRight').find('h1').html(LessonModel.get('lesson')).addClass('bounceInLeft');
-		}, 250);
-
-
 		// Stage - Phrases
 		var phrases_html = '';
 
@@ -102,50 +108,13 @@ var LessonView = Backbone.View.extend(
 		// Populate HTML		
 		$('#stage').html(_.template($("#template-phrases").html(), { phrases: phrases_html }));
 
-
-		// Footer
-		setTimeout(function() {
-			$('#footer').removeClass('bounceOutDown').html('<a href="#"><span class="icon-arrow-left-alt1"></span></a> <a href="#" id="button_play_all"><span class="icon-play"></span></a> <a href="#" id="button_pause_all"><span class="icon-pause"></span></a>').addClass('bounceInUp');
-		}, 250);
-
 	},
-	media: function() {
-
-	}
 	playAllPhrases: function(e) {
 
 		e.preventDefault();
 
-		this.media.play();
+		//this.media.play();
 
-/*		HTML5 Audio API
-		var audio = document.createElement('audio');
-		audio.setAttribute('id', 'audio-player');
-		audio.setAttribute('src', 'audio/' + LessonModel.get('audio_file'));
-		audio.load();
-		//audio.currentTime = 1;
-		audio.play();
-
-		// Pause on Stop
-		audio.addEventListener('timeupdate', function(e)
-		{
-			if (audio.currentTime > LessonModel.get('intro').end)
-			{
-				console.log('stop introduction');
-				audio.pause();
-			}
-		}, true);
-*/
-
-	},
-	mediaSuccess: function() {
-		console.log('Inside mediaSuccess yay!!!!');
-	},
-	mediaError: function() {
-		console.log('Inside mediaError yay!!!!');
-	},
-	mediaStatus: function() {
-		console.log('Inside mediaStatus yay!!!!');
 	}		
 });
 
@@ -154,6 +123,7 @@ var PhraseView = Backbone.View.extend(
 {
 	initialize: function()
 	{
+
 		this.render();
 	},
 	render: function() {},
@@ -166,9 +136,6 @@ var PhraseView = Backbone.View.extend(
 	build: function(id)
 	{
 		console.log('inside of phrase ' + id + ' at start ' +  LessonModel.get('phrases')[id].start);
-
-		// Header
-		$('#header').addClass('bounceOutRight');
 
 
 		// Stage - Player		
@@ -185,14 +152,6 @@ var PhraseView = Backbone.View.extend(
 			$('#stage').html(template).hide().delay(250).fadeIn();
 	
 		}, 500);
-
-		var controls_data = {
-			lesson_url: LessonModel.get('lesson_url'),
-			loop_total: UserModel.get('loop_total')
-		}
-
-	    var template_controls = _.template($('#template-player-controls').html(), controls_data);
-		$('#footer').html(template_controls).hide().delay(250).fadeIn();
 
 
 
@@ -234,15 +193,12 @@ var PhraseView = Backbone.View.extend(
 	buttonBack: function(e) {
 
 		audio.pause();	
-
 		return false;
 	},
 	buttonChangeLoop: function(e) {
 		
 		e.preventDefault();
-		
-		var controls = _.template($('#template-loop-controls').html());
-				
+		var controls = _.template($('#template-loop-controls').html());				
 		return false;
 	},
 	buttonPlay: function(e) {
@@ -250,8 +206,6 @@ var PhraseView = Backbone.View.extend(
 		console.log('inside button play');
 
 		e.preventDefault();
-
-		
 		if ($(this).html() === '<span class="icon-pause"></span>') {
 			audio.pause();
 			$(this).html('<span class="icon-play"></span>');
@@ -266,7 +220,6 @@ var PhraseView = Backbone.View.extend(
 	buttonVolume: function(e) {
 		
 		e.preventDefault();
-		
 		if ($(this).html() === '<span class="icon-volume-high"></span>') {
 			audio.volume=.25;
 			$(this).html('<span class="icon-volume-medium"></span>');
